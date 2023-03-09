@@ -1,12 +1,17 @@
 server.port: 8083
 
-spring.kafka.consumer:
-  bootstrap-servers: localhost:9092
-  group-id: opensearch
-  auto-offset-reset: earliest
-  key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-  value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka:
+  consumer:
+    bootstrap-servers: localhost:9092
+    group-id: opensearch
+    auto-offset-reset: earliest
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    max-poll-records: 50
+  listener.type: batch
 
-wikimedia.topic: wikimedia.recentchange
+kafka.topic.wikimedia: wikimedia.recentchange
 
-opensearch.server: localhost:9200
+opensearch:
+  server: localhost:9200
+  index.wikimedia: wikimedia
