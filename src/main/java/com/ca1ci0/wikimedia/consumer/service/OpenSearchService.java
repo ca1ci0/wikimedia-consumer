@@ -33,8 +33,8 @@ public class OpenSearchService {
     BulkRequest bulkRequest = new BulkRequest();
     batch.stream()
         .map(message -> new IndexRequest(wikimediaIndex)
-            .source(message, XContentType.JSON)
-            .id(WikimediaMessageParser.extractIdFromWikimediaMessage(message)))
+            .id(WikimediaMessageParser.extractIdFromWikimediaMessage(message))
+            .source(message, XContentType.JSON))
         .forEach(bulkRequest::add);
 
     BulkResponse response = openSearchClient.bulk(bulkRequest, RequestOptions.DEFAULT);
