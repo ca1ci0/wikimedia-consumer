@@ -2,7 +2,7 @@ server.port: 8083
 
 spring.kafka:
   consumer:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:"localhost:9092"}
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}
     group-id: opensearch-group
     auto-offset-reset: earliest
     key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -13,5 +13,5 @@ spring.kafka:
 kafka.topic.wikimedia: wikimedia.recentchange
 
 opensearch:
-  server: ${OPENSEARCH_SERVER:"localhost:9200"}
+  server: ${OPENSEARCH_SERVER:localhost:9200}
   index.wikimedia: wikimedia
